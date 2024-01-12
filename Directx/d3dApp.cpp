@@ -145,7 +145,7 @@ void D3DApp::OnResize()
 	assert(mDirectCmdListAlloc);
 
 	// Flush before changing any resources.
-	//FlushCommandQueue();
+	FlushCommandQueue();
 
 	ThrowIfFailed(mCommandList->Reset(mDirectCmdListAlloc.Get(), nullptr));
 
@@ -368,6 +368,9 @@ LRESULT D3DApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		}
 		else if ((int)wParam == VK_F2)
 			Set4xMsaaState(!m4xMsaaState);
+		else if (wParam == 0x44)
+		{
+		}
 
 		return 0;
 	}
